@@ -28,9 +28,11 @@ extension CVCalendarTouchController {
     public func receiveTouchLocation(_ location: CGPoint, inMonthView monthView: CVCalendarMonthView,
                                      withSelectionType selectionType: CVSelectionType) {
         // let weekViews = monthView.weekViews
-        if let dayView = ownerTouchLocation(location, onMonthView: monthView) ,
-            dayView.isUserInteractionEnabled {
-            receiveTouchOnDayView(dayView, withSelectionType: selectionType)
+        if let dayView = ownerTouchLocation(location, onMonthView: monthView) {
+            calendarView.delegate?.touchReceiveIn?(dayView: dayView)
+            if dayView.isUserInteractionEnabled {
+                receiveTouchOnDayView(dayView, withSelectionType: selectionType)
+            }
         }
     }
     

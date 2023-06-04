@@ -13,6 +13,8 @@ public protocol CVCalendarViewDelegate {
     func presentationMode() -> CalendarMode
     func firstWeekday() -> Weekday
 
+    // MARK: - Custom, handle touches
+    @objc optional func touchReceiveIn(dayView: DayView)
     /*
     Determines whether resizing should cause related views' animation.
     */
